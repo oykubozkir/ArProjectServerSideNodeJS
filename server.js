@@ -63,7 +63,7 @@ wss.on('connection', (ws) => {
 	}
 	
 	console.log(msg[1] +'set');
-	var sendingData = 'CONNECTED';
+	var sendingData = 'CONNECTED|';
 	myMap.set(msg[1],ws);
 	userName = msg[1];
 	sendingData += userName;		  
@@ -78,9 +78,10 @@ wss.on('connection', (ws) => {
 	   tempClient.eMail = msg[3];
 	   clientMap.set(msg[1],tempClient);
 	   console.log(msg[1] +'registered');
-	   var sendingData = 'REGISTERED';
-	myMap.set(msg[1],ws);
-	ws.send(sendingData);
+	   var sendingData = 'REGISTERED|';
+	   sendingData += msg[1];	
+           myMap.set(msg[1],ws);
+	   ws.send(sendingData);
 	}
 	else{
 	   ws.send('ALREADYEXIST');
