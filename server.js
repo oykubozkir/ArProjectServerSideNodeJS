@@ -66,6 +66,7 @@ wss.on('connection', (ws) => {
 	var sendingData = 'CONNECTED';
 	myMap.set(msg[1],ws);
 	userName = msg[1];
+	sendingData += userName;		  
 	ws.send(sendingData);
 	break;
      case 'REGISTER':
