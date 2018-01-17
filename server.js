@@ -133,7 +133,7 @@ wss.on('connection', (ws) => {
                     ws.send('STREAMREQUESTREJECTED');
                 }
                 else{
-                    myMap.get(msg[2]).send('STREAMREQUESTACCEPTED|' + msg[1] + '|' + msg[3]);
+                    myMap.get(msg[2]).send('STREAMREQUESTACCEPTED|' + msg[1] + '|' + ws._socket.remoteAddress);
                 }
                  break;
             case 'STREAMREQUESTREJECTED':
