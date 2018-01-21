@@ -133,6 +133,7 @@ wss.on('connection', (ws) => {
                     ws.send('STREAMREQUESTREJECTED');
                 }
                 else{
+                    sendingUserName = msg[2];
                     myMap.get(msg[2]).send('STREAMREQUESTACCEPTED|' + msg[1] + '|' + ws._socket.remoteAddress);
                     ws.send('YOURIPADDRESS|'+ ws._socket.remoteAddress);
                 }
